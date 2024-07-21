@@ -304,6 +304,7 @@ class _GooglePlacesAutoCompleteTextFormFieldState
             child: widget.overlayContainer?.call(_overlayChild) ??
                 Material(
                   elevation: 1.0,
+                  borderRadius: BorderRadius.circular(12),
                   child: _overlayChild,
                 ),
           ),
@@ -314,26 +315,37 @@ class _GooglePlacesAutoCompleteTextFormFieldState
   }
 
   Widget get _overlayChild {
-    return ListView.builder(
-      padding: EdgeInsets.zero,
-      shrinkWrap: true,
-      itemCount: allPredictions.length,
-      itemBuilder: (BuildContext context, int index) => InkWell(
-        onTap: () {
-          if (index < allPredictions.length) {
-            widget.itmClick!(allPredictions[index]);
-            if (!widget.isLatLngRequired) return;
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: ListView.separated(
+        padding: EdgeInsets.zero,
+        shrinkWrap: true,
+        itemCount: allPredictions.length,
+        separatorBuilder: (BuildContext context, int index) => const Divider(
+          thickness: 0.5,
+          height: 8,
+        ),
+        itemBuilder: (BuildContext context, int index) => InkWell(
+          onTap: () {
+            if (index < allPredictions.length) {
+              widget.itmClick!(allPredictions[index]);
+              if (!widget.isLatLngRequired) return;
 
-            getPlaceDetailsFromPlaceId(allPredictions[index]);
+              getPlaceDetailsFromPlaceId(allPredictions[index]);
 
-            removeOverlay();
-          }
-        },
-        child: Container(
-          padding: const EdgeInsets.all(10),
-          child: Text(
-            allPredictions[index].description!,
-            style: widget.predictionsStyle ?? widget.style,
+              removeOverlay();
+            }
+          },
+          child: Container(
+            color: Colors.transparent,
+            padding: const EdgeInsets.all(10),
+            child: Text(
+              allPredictions[index].description!,
+              style: widget.predictionsStyle ?? widget.style,
+            ),
           ),
         ),
       ),
