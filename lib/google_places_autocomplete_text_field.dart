@@ -274,7 +274,18 @@ class _GooglePlacesAutoCompleteTextFormFieldState
     isSearched = false;
     if (subscriptionResponse.predictions!.isNotEmpty) {
       allPredictions.clear();
-      allPredictions.addAll(subscriptionResponse.predictions!);
+      allPredictions.addAll(
+        subscriptionResponse.predictions!.where(
+          (element) => ![
+            "ChIJMUUEXAUZ9o4RXAziNn4_EEA", // Bogotá, Villanueva
+            "ChIJQ0VBaCadO44RSu7T0zKW8vI", // Bogotá, Tello, Huila
+            "ChIJbRixg1Eaao4RTvcgZIaAdTU", // Bogotacito, Gambita, Santander
+            "ChIJBa0PuN8oRI4RVju1x_x8E0I", // Medellin, Medellin, Antioquia, Colombia
+            "ChIJxTZYQmQpRI4RMSLH5spW4Yc", // Medellin aeropuerto
+            "ChIJ-TkOLPY5Wo4R7oqZpNJ6ZE4", // Medellin, Monteria, Colombia
+          ].contains(element.placeId),
+        ),
+      );
     }
   }
 
