@@ -278,11 +278,17 @@ class _GooglePlacesAutoCompleteTextFormFieldState
         subscriptionResponse.predictions!.where(
           (element) => ![
             "ChIJMUUEXAUZ9o4RXAziNn4_EEA", // Bogotá, Villanueva
-            "ChIJQ0VBaCadO44RSu7T0zKW8vI", // Bogotá, Tello, Huila
-            "ChIJbRixg1Eaao4RTvcgZIaAdTU", // Bogotacito, Gambita, Santander
+            "ChIJQ0VBaCadO44RSu7T0zKW8vI", //
+            "ChIJbRixg1Eaao4RTvcgZIaAdTU", //
             "ChIJBa0PuN8oRI4RVju1x_x8E0I", // Medellin, Medellin, Antioquia, Colombia
-            "ChIJxTZYQmQpRI4RMSLH5spW4Yc", // Medellin aeropuerto
-            "ChIJ-TkOLPY5Wo4R7oqZpNJ6ZE4", // Medellin, Monteria, Colombia
+            "ChIJxTZYQmQpRI4RMSLH5spW4Yc", //
+            "ChIJ-TkOLPY5Wo4R7oqZpNJ6ZE4", //
+            "ChIJD7gwLuRoWo4RKvNfxgvkGw8", // villavicencios
+            "ChIJb1p7J2MtPo4RwNDjckLkaKI",
+            "ChIJ07c51iouPo4R1ngIEfBCHKM",
+            "ChIJ46BVewCFP44RjZ9PGt8P1Io",
+            "ChIJT4V12zwuPo4RUFNFs7kEDWQ",
+            "ChIJU_ZCV6OHOI4Rydpl9gQNSQI",
           ].contains(element.placeId),
         ),
       );
